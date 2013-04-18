@@ -605,7 +605,7 @@ class APIResource(StripeObject):
 
   @classmethod
   def retrieve(cls, id, api_key=None, **params):
-    instance = cls(id, api_key, **params)
+    instance = cls(id, api_key or getattr(self, api_key, None), **params)
     instance.refresh()
     return instance
 
